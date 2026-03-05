@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bichitra Biswas Vegetable Shop — Krishnanagar</title>
 
-    <!-- Add Google Fonts: Playfair Display for Headings, Inter for Body Text -->
+    <!-- Add Google Fonts: Playfair Display for Headings, Inter for Body Text, Noto Sans Bengali for Bengali Text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap"
         rel="stylesheet">
 
     <style>
@@ -62,6 +62,11 @@
             font-family: 'Playfair Display', serif;
         }
 
+        .bengali-text {
+            font-family: 'Noto Sans Bengali', sans-serif;
+            font-weight: 500;
+        }
+
         /* ── NAV ── */
         nav {
             position: fixed;
@@ -97,6 +102,13 @@
             text-transform: uppercase;
             opacity: 0.9;
             margin-top: 2px;
+        }
+
+        .nav-bengali-sub {
+            text-transform: none !important;
+            letter-spacing: 1px !important;
+            font-size: 12px !important;
+            opacity: 0.8 !important;
         }
 
         .nav-links {
@@ -386,6 +398,17 @@
             text-transform: uppercase;
             margin-bottom: 16px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-tag .bengali-tag {
+            font-size: 13px;
+            text-transform: none;
+            letter-spacing: 1px;
+            color: var(--leaf2);
+            opacity: 0.9;
         }
 
         /* Section titles medium weight */
@@ -979,7 +1002,7 @@
     <nav>
         <div class="nav-logo">
             Bichitra Biswas
-            <span>Vegetable Shop</span>
+            <span>Vegetable Shop <span class="bengali-text nav-bengali-sub">· বিচিত্র বিশ্বাস</span></span>
         </div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
@@ -998,6 +1021,9 @@
         <div class="hero-content">
             <p class="hero-est">— Est. 1990 —</p>
             <h1 class="hero-name">Bichitra Biswas</h1>
+            <p class="hero-sub bengali-text"
+                style="color: var(--leaf2); font-size: 20px; letter-spacing: 2px; margin-top: -10px; margin-bottom: 15px; text-transform: none;">
+                বিচিত্র বিশ্বাস ভেজিটেবল শপ</p>
             <p class="hero-sub">Premium Wholesale & Retail Vegetable Supplier</p>
 
             <div class="hero-divider">
@@ -1074,7 +1100,7 @@
             </div>
         </div>
         <div>
-            <p class="section-tag">Our Heritage</p>
+            <p class="section-tag">Our Heritage <span class="bengali-text bengali-tag">· আমাদের ঐতিহ্য</span></p>
             <h2 class="section-title">A Name Trusted<br />by <span>Krishnanagar</span></h2>
             <p class="section-desc">Started in 1990 at Patra Bazar, Bichitra Biswas Vegetable Shop has grown from a
                 single stall to one of the premier vegetable suppliers in the region. We serve homes, fine-dining
@@ -1091,7 +1117,7 @@
         <div class="inner">
             <div class="products-intro">
                 <div>
-                    <p class="section-tag">Premium Produce</p>
+                    <p class="section-tag">Premium Produce <span class="bengali-text bengali-tag">· তাজা সবজি</span></p>
                     <h2 class="section-title">Fresh <span>Everyday</span></h2>
                 </div>
                 <p class="section-desc">We stock highly sought-after seasonal and specialty vegetables utilized by top
@@ -1226,7 +1252,7 @@
     <!-- SERVICES -->
     <div id="services">
         <div class="inner">
-            <p class="section-tag">What We Do</p>
+            <p class="section-tag">What We Do <span class="bengali-text bengali-tag">· আমাদের পরিষেবা</span></p>
             <h2 class="section-title">Serving Every <span>Need</span></h2>
             <div class="services-grid">
                 <div class="service-card">
@@ -1273,7 +1299,8 @@
     <div id="trust">
         <div class="inner">
             <div class="trust-header">
-                <p class="section-tag">Why Choose Us</p>
+                <p class="section-tag" style="justify-content: center;">Why Choose Us <span
+                        class="bengali-text bengali-tag">· কেন আমাদের বেছে নেবেন</span></p>
                 <h2 class="section-title">Built on <span>Trust</span></h2>
             </div>
             <div class="trust-grid">
