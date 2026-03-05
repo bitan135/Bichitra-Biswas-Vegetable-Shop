@@ -84,11 +84,21 @@
         }
 
         .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 20px;
             letter-spacing: 1px;
             color: var(--gold2);
             font-weight: 700;
             line-height: 1.2;
+        }
+
+        .nav-brand-logo {
+            height: 48px;
+            width: auto;
+            mix-blend-mode: screen;
+            filter: contrast(1.2) brightness(1.1);
         }
 
         .nav-logo span {
@@ -215,9 +225,20 @@
             letter-spacing: 5px;
             color: var(--gold);
             text-transform: uppercase;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-weight: 500;
-            opacity: 0.9;
+            opacity: 0.8;
+        }
+
+        .hero-brand-logo {
+            height: 140px;
+            width: auto;
+            mix-blend-mode: screen;
+            margin-bottom: 24px;
+            filter: contrast(1.2) brightness(1.1);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            animation-delay: 0.05s;
         }
 
         /* Bold headline for Hero section */
@@ -817,6 +838,14 @@
             color: var(--muted);
         }
 
+        .footer-brand-logo {
+            height: 60px;
+            width: auto;
+            mix-blend-mode: screen;
+            filter: contrast(1.2) brightness(1.1);
+            opacity: 0.9;
+        }
+
         .footer-copy {
             font-size: 13px;
             color: rgba(138, 171, 150, 0.6);
@@ -904,6 +933,26 @@
 
             .contact-card {
                 padding: 40px 24px;
+            }
+
+            .nav-brand-logo {
+                height: 36px;
+            }
+
+            .hero-brand-logo {
+                height: 100px;
+            }
+
+            .footer-brand-logo {
+                height: 48px;
+                margin-bottom: 12px;
+            }
+
+            .footer-left>div {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 8px;
             }
 
             .hero-name {
@@ -1001,8 +1050,11 @@
     <!-- NAV -->
     <nav>
         <div class="nav-logo">
-            Bichitra Biswas
-            <span>Vegetable Shop <span class="bengali-text nav-bengali-sub">· বিচিত্র বিশ্বাস</span></span>
+            <img class="nav-brand-logo" src="assets/logo.png" alt="Bichitra Biswas Logo">
+            <div>
+                Bichitra Biswas
+                <span>Vegetable Shop <span class="bengali-text nav-bengali-sub">· বিচিত্র বিশ্বাস</span></span>
+            </div>
         </div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
@@ -1019,6 +1071,7 @@
         <div class="hero-grain"></div>
         <div class="hero-glow"></div>
         <div class="hero-content">
+            <img class="hero-brand-logo" src="assets/logo.png" alt="Bichitra Biswas Logo">
             <p class="hero-est">— Est. 1990 —</p>
             <h1 class="hero-name">Bichitra Biswas</h1>
             <p class="hero-sub bengali-text"
@@ -1376,8 +1429,13 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-left">
-            <div class="footer-name">Bichitra Biswas Vegetable Shop</div>
-            <div class="footer-tagline">Premium Wholesale & Retail Vegetable Supplier</div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <img class="footer-brand-logo" src="assets/logo.png" alt="Bichitra Biswas Logo">
+                <div>
+                    <div class="footer-name">Bichitra Biswas Vegetable Shop</div>
+                    <div class="footer-tagline">Premium Wholesale & Retail Vegetable Supplier</div>
+                </div>
+            </div>
         </div>
         <div class="footer-copy">© 2026 · Est. 1990 · All Rights Reserved</div>
     </footer>
