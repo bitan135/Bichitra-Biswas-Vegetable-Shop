@@ -307,6 +307,35 @@
             transform: translateY(-3px);
         }
 
+        .hero-features {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            width: 100%;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--leaf2);
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .hero-feature svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gold);
+        }
+
         /* ── STATS STRIP ── */
         .stats-strip {
             background: var(--green);
@@ -929,6 +958,10 @@
         .hero-buttons {
             animation-delay: 0.7s;
         }
+
+        .hero-features {
+            animation-delay: 0.85s;
+        }
     </style>
 </head>
 
@@ -965,7 +998,7 @@
         <div class="hero-content">
             <p class="hero-est">— Est. 1990 —</p>
             <h1 class="hero-name">Bichitra Biswas</h1>
-            <p class="hero-sub">Krishnanagar's Most Trusted Supplier</p>
+            <p class="hero-sub">Premium Wholesale & Retail Vegetable Supplier</p>
 
             <div class="hero-divider">
                 <div class="hero-divider-line"></div>
@@ -973,12 +1006,33 @@
                 <div class="hero-divider-line"></div>
             </div>
 
-            <p class="hero-tagline">35 Years of delivering nature's best, farm-fresh vegetables directly to your
-                kitchen, hotel, and restaurant.</p>
+            <p class="hero-tagline">Supplying nature's best, farm-fresh produce directly to kitchens, hotels, and
+                restaurants across Krishnanagar for over 35 years.</p>
 
             <div class="hero-buttons">
                 <a class="btn-hero-primary" href="https://wa.me/917076076485" target="_blank">Order on WhatsApp</a>
                 <a class="btn-hero-outline" href="#products">View Products</a>
+            </div>
+
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
+                    Sourced Fresh Daily
+                </div>
+                <div class="hero-feature">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
+                    Wholesale Rates
+                </div>
+                <div class="hero-feature">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
+                    Timely Delivery
+                </div>
             </div>
         </div>
     </section>
@@ -990,7 +1044,7 @@
             <div class="stat-label">Years of Trust</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">500+</div>
+            <div class="stat-number">100+</div>
             <div class="stat-label">Daily Clients</div>
         </div>
         <div class="stat-item">
@@ -1293,7 +1347,7 @@
     <footer>
         <div class="footer-left">
             <div class="footer-name">Bichitra Biswas Vegetable Shop</div>
-            <div class="footer-tagline">Krishnanagar's Most Trusted Supplier</div>
+            <div class="footer-tagline">Premium Wholesale & Retail Vegetable Supplier</div>
         </div>
         <div class="footer-copy">© 2026 · Est. 1990 · All Rights Reserved</div>
     </footer>
