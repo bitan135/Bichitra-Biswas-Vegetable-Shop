@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bichitra Biswas Vegetable Shop — Krishnanagar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark:    #0d2418;
+      --darker:  #081510;
+      --green:   #1a3a2a;
+      --gold:    #c9a84c;
+      --gold2:   #f0d080;
+      --leaf:    #4caf50;
+      --leaf2:   #a8d5b0;
+      --white:   #f5f0e8;
+      --muted:   #8aab96;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--darker);
+      color: var(--white);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(8,21,16,0.95);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; letter-spacing: 2px;
+      color: var(--gold2);
+    }
+    .nav-logo span { color: var(--leaf2); font-style: italic; font-size: 13px; display: block; letter-spacing: 3px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--darker);
+      padding: 10px 24px; border: none; cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 600; text-decoration: none;
+      transition: background 0.3s;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #081510 0%, #0d2418 50%, #081510 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(76,175,80,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; max-width: 900px; padding: 40px 20px;
+    }
+    .hero-leaf {
+      margin: 0 auto 30px;
+      width: 70px; height: 70px;
+    }
+    .hero-est {
+      font-size: 12px; letter-spacing: 6px; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 20px;
+      opacity: 0.85;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 6vw, 82px);
+      font-weight: 700; line-height: 1.1;
+      color: var(--gold2);
+      letter-spacing: 2px;
+      text-shadow: 0 0 60px rgba(201,168,76,0.2);
+      margin-bottom: 12px;
+    }
+    .hero-bengali {
+      font-family: 'Noto Sans Bengali', serif;
+      font-size: 22px; color: var(--leaf2);
+      margin-bottom: 16px; letter-spacing: 2px;
+    }
+    .hero-sub {
+      font-size: 15px; letter-spacing: 8px; color: var(--white);
+      text-transform: uppercase; opacity: 0.7; margin-bottom: 28px;
+    }
+    .hero-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin: 24px auto;
+    }
+    .hero-divider-line {
+      width: 120px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .hero-divider-diamond {
+      width: 8px; height: 8px;
+      background: var(--gold); transform: rotate(45deg);
+    }
+    .hero-tagline {
+      font-style: italic; font-size: 22px;
+      color: var(--leaf2); letter-spacing: 1px;
+      margin-bottom: 48px;
+    }
+    .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--darker);
+      padding: 16px 40px; border: none; cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; letter-spacing: 3px; text-transform: uppercase;
+      font-weight: 600; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--gold);
+      padding: 15px 38px;
+      border: 1px solid var(--gold);
+      cursor: pointer; font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; letter-spacing: 3px; text-transform: uppercase;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-outline:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--green);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 40px 60px;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px;
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px; color: var(--gold2); line-height: 1;
+    }
+    .stat-label {
+      font-size: 12px; letter-spacing: 4px; color: var(--muted);
+      text-transform: uppercase; margin-top: 6px;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 11px; letter-spacing: 6px; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      color: var(--white); line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .section-title span { color: var(--gold2); font-style: italic; }
+    .section-desc {
+      font-size: 18px; color: var(--muted); line-height: 1.8;
+      max-width: 580px;
+    }
+
+    /* ── ABOUT ── */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-visual {
+      position: relative;
+    }
+    .about-box {
+      background: var(--green);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 50px 40px; position: relative;
+    }
+    .about-box::before {
+      content: '';
+      position: absolute; top: -8px; left: -8px; right: 8px; bottom: 8px;
+      border: 1px solid rgba(201,168,76,0.15); pointer-events: none;
+    }
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px; color: var(--gold); opacity: 0.3;
+      line-height: 1; margin-bottom: 10px;
+    }
+    .about-text {
+      font-size: 18px; line-height: 1.9; color: var(--leaf2);
+      font-style: italic;
+    }
+    .about-sig {
+      margin-top: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; color: var(--gold);
+    }
+    .about-sig span {
+      display: block; font-family: 'Cormorant Garamond', serif;
+      font-size: 13px; color: var(--muted); letter-spacing: 3px;
+      font-style: normal; margin-top: 4px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--green); padding: 100px 0; max-width: 100%; }
+    #services .inner { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px; margin-top: 60px;
+    }
+    .service-card {
+      background: rgba(8,21,16,0.6);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 40px 32px;
+      transition: all 0.3s; cursor: default;
+    }
+    .service-card:hover {
+      background: rgba(8,21,16,0.9);
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-4px);
+    }
+    .service-icon { font-size: 36px; margin-bottom: 18px; }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; color: var(--gold2); margin-bottom: 10px;
+    }
+    .service-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+    /* ── PRODUCTS ── */
+    #products { }
+    .products-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; flex-wrap: wrap; gap: 20px; }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px;
+    }
+    .product-pill {
+      background: var(--green);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 20px 16px; text-align: center;
+      transition: all 0.25s;
+    }
+    .product-pill:hover {
+      border-color: var(--gold); background: rgba(26,58,42,0.9);
+    }
+    .product-emoji { font-size: 28px; margin-bottom: 8px; }
+    .product-name { font-size: 14px; color: var(--white); letter-spacing: 1px; }
+
+    /* ── TRUST ── */
+    #trust {
+      background: linear-gradient(180deg, var(--darker) 0%, var(--green) 50%, var(--darker) 100%);
+      max-width: 100%; padding: 100px 0;
+    }
+    #trust .inner { max-width: 1200px; margin: 0 auto; padding: 0 60px; text-align: center; }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px; margin-top: 60px;
+    }
+    .trust-card {
+      padding: 36px 24px;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .trust-icon { font-size: 32px; margin-bottom: 14px; }
+    .trust-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; color: var(--gold2); margin-bottom: 8px;
+    }
+    .trust-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    .contact-card {
+      background: var(--green);
+      border: 1px solid rgba(201,168,76,0.25);
+      max-width: 700px; margin: 50px auto 0;
+      padding: 60px 50px;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-icon { font-size: 24px; width: 40px; flex-shrink: 0; }
+    .contact-label { font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+    .contact-value { font-size: 17px; color: var(--white); margin-top: 4px; }
+    .contact-value a { color: var(--white); text-decoration: none; transition: color 0.3s; }
+    .contact-value a:hover { color: var(--gold); }
+    .whatsapp-btn {
+      display: inline-block; margin-top: 40px;
+      background: #25D366; color: white;
+      padding: 18px 50px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; letter-spacing: 3px; text-transform: uppercase;
+      font-weight: 600; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .whatsapp-btn:hover { background: #20b858; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--darker);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 40px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; color: var(--gold);
+    }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-tagline { font-style: italic; font-size: 14px; color: var(--leaf2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      #about { grid-template-columns: 1fr; gap: 40px; }
+      .stats-strip { padding: 30px 24px; }
+      #services .inner, #trust .inner { padding: 0 24px; }
+      footer { padding: 30px 24px; flex-direction: column; text-align: center; }
+      .contact-card { padding: 40px 24px; }
+      .hero-buttons { flex-direction: column; align-items: stretch; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content > * {
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+    }
+    .hero-leaf     { animation-delay: 0.1s; }
+    .hero-est      { animation-delay: 0.2s; }
+    .hero-name     { animation-delay: 0.35s; }
+    .hero-bengali  { animation-delay: 0.45s; }
+    .hero-sub      { animation-delay: 0.5s; }
+    .hero-divider  { animation-delay: 0.55s; }
+    .hero-tagline  { animation-delay: 0.65s; }
+    .hero-buttons  { animation-delay: 0.8s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Bichitra Biswas
+    <span>Vegetable Shop</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="https://wa.me/917076076485" target="_blank">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <svg class="hero-leaf" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4caf50"/>
+          <stop offset="100%" stop-color="#2e7d32"/>
+        </linearGradient>
+      </defs>
+      <path d="M40,5 C55,18 65,32 58,50 C51,66 29,66 22,50 C15,32 25,18 40,5Z" fill="url(#hg)"/>
+      <line x1="40" y1="8" x2="40" y2="56" stroke="#a5d6a7" stroke-width="1.5" opacity="0.7"/>
+      <line x1="40" y1="30" x2="54" y2="44" stroke="#a5d6a7" stroke-width="1" opacity="0.5"/>
+      <line x1="40" y1="30" x2="26" y2="44" stroke="#a5d6a7" stroke-width="1" opacity="0.5"/>
+      <path d="M40,56 C42,64 41,70 40,76" stroke="#4caf50" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M40,66 C48,59 55,63 52,72 C49,78 40,72 40,66Z" fill="url(#hg)" opacity="0.85"/>
+      <path d="M40,66 C32,59 25,63 28,72 C31,78 40,72 40,66Z" fill="url(#hg)" opacity="0.85"/>
+    </svg>
+    <p class="hero-est">— Est. 1990 · 35 Years of Trust —</p>
+    <h1 class="hero-name">Bichitra Biswas</h1>
+    <p class="hero-bengali">বিচিত্র বিশ্বাস</p>
+    <p class="hero-sub">Vegetable Shop · Krishnanagar</p>
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-diamond"></div>
+      <div class="hero-divider-line"></div>
+    </div>
+    <p class="hero-tagline">Nature's Best, Delivered Fresh</p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="https://wa.me/917076076485" target="_blank">📲 Order on WhatsApp</a>
+      <a class="btn-outline" href="https://maps.app.goo.gl/7Tg922XMBKhibJxk7" target="_blank">📍 Our Store</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-number">35+</div>
+    <div class="stat-label">Years of Experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">500+</div>
+    <div class="stat-label">Happy Customers</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">50+</div>
+    <div class="stat-label">Varieties of Vegetables</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">Daily</div>
+    <div class="stat-label">Fresh Stock</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual">
+    <div class="about-box">
+      <div class="about-quote">"</div>
+      <p class="about-text">For over 35 years, I have built this business on one principle — freshness and trust. Every vegetable I sell carries my name and my promise to the people of Krishnanagar.</p>
+      <div class="about-sig">
+        Bichitra Biswas
+        <span>Proprietor · Est. 1990</span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="section-tag">Our Story · আমাদের গল্প</p>
+    <h2 class="section-title">A Name Trusted<br/>by <span>Krishnanagar</span></h2>
+    <p class="section-desc">Started in 1990 at Patra Bazar, Bichitra Biswas Vegetable Shop has grown from a single stall to one of the most trusted vegetable suppliers in Krishnanagar. We serve homes, hotels, restaurants, dhabas, and schools — all with the same commitment to quality and freshness.</p>
+    <br/><br/>
+    <p class="section-desc" style="font-size:15px;">Located at M.M. Ghosh Street, Patra Bazar — we are your neighbourhood's most reliable source for farm-fresh vegetables, every single day.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="inner">
+    <p class="section-tag">What We Do · আমরা কী করি</p>
+    <h2 class="section-title">Serving Every <span>Need</span></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏪</div>
+        <div class="service-name">Retail Sales</div>
+        <div class="service-desc">Walk in and pick the freshest vegetables at the best prices. Daily stock, daily freshness.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <div class="service-name">Wholesale Supply</div>
+        <div class="service-desc">Bulk supply for vendors and traders. Competitive pricing with consistent quality.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏨</div>
+        <div class="service-name">Hotels & Restaurants</div>
+        <div class="service-desc">Reliable daily supply to hotels, restaurants, and dhabas across Krishnanagar.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏫</div>
+        <div class="service-name">Schools & Caterers</div>
+        <div class="service-desc">Scheduled weekly supply for school canteens and catering businesses.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚚</div>
+        <div class="service-name">Delivery Available</div>
+        <div class="service-desc">Order via WhatsApp and get fresh vegetables delivered to your doorstep.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-name">Daily Price List</div>
+        <div class="service-desc">Join our WhatsApp group to receive fresh rates every morning at 6 AM.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-intro">
+    <div>
+      <p class="section-tag">Our Products · আমাদের পণ্য</p>
+      <h2 class="section-title">Fresh <span>Everyday</span></h2>
+    </div>
+    <p class="section-desc" style="font-size:15px; max-width:300px;">We stock 50+ varieties of seasonal and everyday vegetables sourced fresh from the mandi daily.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-pill"><div class="product-emoji">🥦</div><div class="product-name">Broccoli</div></div>
+    <div class="product-pill"><div class="product-emoji">🍄</div><div class="product-name">Mushroom</div></div>
+    <div class="product-pill"><div class="product-emoji">🫑</div><div class="product-name">Bell Pepper</div></div>
+    <div class="product-pill"><div class="product-emoji">🌽</div><div class="product-name">Sweet Corn</div></div>
+    <div class="product-pill"><div class="product-emoji">🥬</div><div class="product-name">Lettuce</div></div>
+    <div class="product-pill"><div class="product-emoji">🍅</div><div class="product-name">Tomato</div></div>
+    <div class="product-pill"><div class="product-emoji">🥕</div><div class="product-name">Carrot</div></div>
+    <div class="product-pill"><div class="product-emoji">🫛</div><div class="product-name">French Beans</div></div>
+    <div class="product-pill"><div class="product-emoji">🍋</div><div class="product-name">Lemon</div></div>
+    <div class="product-pill"><div class="product-emoji">🌶️</div><div class="product-name">Green Chilli</div></div>
+    <div class="product-pill"><div class="product-emoji">🥒</div><div class="product-name">Cucumber</div></div>
+    <div class="product-pill"><div class="product-emoji">🌿</div><div class="product-name">Coriander</div></div>
+    <div class="product-pill"><div class="product-emoji">🍆</div><div class="product-name">Brinjal</div></div>
+    <div class="product-pill"><div class="product-emoji">🥑</div><div class="product-name">Avocado</div></div>
+    <div class="product-pill"><div class="product-emoji">🌱</div><div class="product-name">& 40 More...</div></div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div id="trust">
+  <div class="inner">
+    <p class="section-tag">Why Choose Us · কেন আমাদের বেছে নেবেন</p>
+    <h2 class="section-title">Built on <span>Trust</span></h2>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">⭐</div>
+        <div class="trust-title">35 Years of Trust</div>
+        <div class="trust-desc">A legacy built on honesty and quality since 1990 in Krishnanagar.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🌿</div>
+        <div class="trust-title">Always Fresh</div>
+        <div class="trust-desc">Stock sourced fresh from the mandi every single morning without fail.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">💰</div>
+        <div class="trust-title">Best Prices</div>
+        <div class="trust-desc">Fair, transparent pricing for retail and wholesale buyers alike.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🤝</div>
+        <div class="trust-title">Personal Service</div>
+        <div class="trust-desc">You deal directly with Bichitra Biswas — not a middleman.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">📍</div>
+        <div class="trust-title">Local & Reliable</div>
+        <div class="trust-desc">Rooted in Krishnanagar, serving the community every day.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">📲</div>
+        <div class="trust-title">Easy Ordering</div>
+        <div class="trust-desc">Order via WhatsApp, get daily price updates, doorstep delivery.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-tag" style="text-align:center;">Get In Touch · যোগাযোগ করুন</p>
+  <h2 class="section-title" style="text-align:center;">Order or <span>Visit Us</span></h2>
+  <div class="contact-card">
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-label">Address</div>
+        <div class="contact-value">Patra Bazar, M.M. Ghosh Street<br/>Krishnanagar, Nadia, West Bengal</div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📲</div>
+      <div>
+        <div class="contact-label">WhatsApp & Call</div>
+        <div class="contact-value"><a href="https://wa.me/917076076485" target="_blank">WA: +91 7076076485</a> | <a href="tel:+919732711025">Call: +91 9732711025</a></div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🕐</div>
+      <div>
+        <div class="contact-label">Shop Hours</div>
+        <div class="contact-value">6:00 AM – 3:00 PM · Daily</div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🗺️</div>
+      <div>
+        <div class="contact-label">Google Maps</div>
+        <div class="contact-value"><a href="https://maps.app.goo.gl/7Tg922XMBKhibJxk7" target="_blank">View on Map</a></div>
+      </div>
+    </div>
+    <a class="whatsapp-btn" href="https://wa.me/917076076485" target="_blank">
+      💬 Chat on WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Bichitra Biswas Vegetable Shop</div>
+  <div class="footer-tagline">Nature's Best, Delivered Fresh</div>
+  <div class="footer-copy">© 2025 · Est. 1990 · Krishnanagar, WB</div>
+</footer>
+
+</body>
+</html>
