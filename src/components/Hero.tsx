@@ -84,8 +84,8 @@ export default function Hero() {
                         <a href="https://wa.me/917076076485" target="_blank" rel="noopener noreferrer" className="bg-gold text-darker px-8 py-4 font-sans text-sm font-semibold uppercase tracking-widest rounded-none hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(201,168,76,0.4)] transition-all duration-300 w-full sm:w-auto">
                             📲 Order on WhatsApp
                         </a>
-                        <a href="#products" className="border border-gold text-gold px-8 py-4 font-sans text-sm font-semibold uppercase tracking-widest rounded-none hover:bg-gold hover:text-darker transition-all duration-300 w-full sm:w-auto">
-                            View Products
+                        <a href="https://maps.google.com/maps?q=Patra+Bazar,+M.M.+Ghosh+Street,+Krishnanagar,+West+Bengal+741101" target="_blank" rel="noopener noreferrer" className="border border-gold text-gold px-8 py-4 font-sans text-sm font-semibold uppercase tracking-widest rounded-none hover:bg-gold hover:text-darker transition-all duration-300 w-full sm:w-auto">
+                            Store Location
                         </a>
                     </motion.div>
 
