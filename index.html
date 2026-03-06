@@ -131,19 +131,33 @@
         }
 
         /* ── NAV ── */
-        nav {
+        header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 24px 60px;
+            background: rgba(8, 21, 16, 0);
+            /* Transparent initially */
+            border-bottom: 1px solid rgba(201, 168, 76, 0);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Smart SCROLLED state */
+        header.nav-scrolled nav {
             padding: 16px 60px;
             background: rgba(8, 21, 16, 0.95);
             border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .nav-logo {
@@ -225,6 +239,19 @@
             background: var(--gold2);
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(201, 168, 76, 0.15);
+        }
+
+        /* Cinematic Grain Overlay */
+        .global-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* ── HERO ── */
@@ -931,6 +958,36 @@
             text-decoration: none;
         }
 
+        .floating-wa::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 2px solid #25D366;
+            animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
         .floating-wa:hover {
             transform: scale(1.1) translateY(-5px);
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
@@ -960,8 +1017,10 @@
         }
 
         @media (max-width: 768px) {
+
+            header.nav-scrolled nav,
             nav {
-                padding: 18px 24px;
+                padding: 16px 24px;
             }
 
             .nav-links {
@@ -1104,6 +1163,58 @@
             }
         }
 
+        /* Scroll Reveal Utility Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes textReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Accessibility: Respect Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .hero-brand-logo,
+            .hero-content>* {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        }
+
         .hero-content>* {
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
@@ -1140,6 +1251,8 @@
 </head>
 
 <body>
+    <!-- Cinematic Global Grain Overay -->
+    <div class="global-grain"></div>
 
     <!-- FLOATING WHATSAPP -->
     <a href="https://wa.me/917076076485" target="_blank" class="floating-wa" aria-label="Chat on WhatsApp">
@@ -1181,7 +1294,10 @@
             <div class="hero-content">
                 <img class="hero-brand-logo" src="assets/logo.png" alt="Bichitra Biswas Logo">
                 <p class="hero-est">— Est. 1990 —</p>
-                <h1 class="hero-name">Bichitra Biswas</h1>
+                <h1 class="hero-name">
+                    <span class="char" style="animation-delay: 0.2s;">Bichitra</span>
+                    <span class="char" style="animation-delay: 0.3s;">Biswas</span>
+                </h1>
                 <p class="hero-sub bengali-text"
                     style="color: var(--leaf2); font-size: 22px; letter-spacing: 2px; margin-top: -15px; margin-bottom: 20px; font-style: normal;">
                     বিচিত্র বিশ্বাস ভেজিটেবল শপ</p>
@@ -1230,27 +1346,27 @@
         </section>
 
         <!-- STATS -->
-        <div class="stats-strip">
+        <div class="stats-strip reveal">
             <div class="stat-item">
-                <div class="stat-number">35+</div>
+                <div class="stat-number" data-target="35">0</div>
                 <div class="stat-label">Years of Trust</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">100+</div>
+                <div class="stat-number" data-target="100">0</div>
                 <div class="stat-label">Daily Clients</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">50+</div>
+                <div class="stat-number" data-target="50">0</div>
                 <div class="stat-label">Fresh Varieties</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">100%</div>
+                <div class="stat-number" data-target="100">0</div>
                 <div class="stat-label">Quality Assured</div>
             </div>
         </div>
 
         <!-- ABOUT -->
-        <section id="about">
+        <section id="about" class="reveal">
             <div class="about-visual">
                 <div class="about-box">
                     <div class="about-quote-icon">"</div>
@@ -1280,7 +1396,7 @@
         </section>
 
         <!-- PRODUCTS -->
-        <section id="products">
+        <section id="products" class="reveal">
             <div class="inner">
                 <div class="products-intro">
                     <div>
@@ -1425,7 +1541,7 @@
         </section>
 
         <!-- SERVICES -->
-        <section id="services" aria-labelledby="services-heading">
+        <section id="services" aria-labelledby="services-heading" class="reveal">
             <div class="inner">
                 <p class="section-tag" id="services-heading">What We Do <span class="bengali-text bengali-tag">· আমাদের
                         পরিষেবা</span></p>
@@ -1476,7 +1592,7 @@
         </section>
 
         <!-- TRUST -->
-        <section id="trust" aria-labelledby="trust-heading">
+        <section id="trust" aria-labelledby="trust-heading" class="reveal">
             <div class="inner">
                 <div class="trust-header">
                     <p class="section-tag" id="trust-heading" style="justify-content: center;">Why Choose Us <span
@@ -1508,7 +1624,7 @@
             </div>
 
             <!-- CONTACT -->
-            <section id="contact">
+            <section id="contact" class="reveal">
                 <div class="inner">
                     <p class="section-tag">Get In Touch</p>
                     <h2 class="section-title">Partner <span>With Us</span></h2>
@@ -1569,6 +1685,88 @@
         <div class="footer-copy">© 2026 · Est. 1990 · All Rights Reserved</div>
     </footer>
 
+    <!-- INTERACTIVITY SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /* ── SMART HEADER ON SCROLL ── */
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('nav-scrolled');
+                } else {
+                    header.classList.remove('nav-scrolled');
+                }
+            }, { passive: true });
+
+            /* ── INTERSECTION OBSERVERS ── */
+            // Global reveal animations
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !prefersReducedMotion) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target); // Animate once
+                    }
+                });
+            }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            // Stats Counter logic
+            const countObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const countElements = entry.target.querySelectorAll('.stat-number');
+                        countElements.forEach(el => {
+                            const target = +el.getAttribute('data-target');
+                            const increment = target / 40; // Speed control
+                            let current = 0;
+
+                            const updateCount = () => {
+                                current += increment;
+                                if (current < target) {
+                                    el.innerText = Math.ceil(current) + (target === 100 && el.nextElementSibling.innerText.includes('Quality') ? '%' : '+');
+                                    requestAnimationFrame(updateCount);
+                                } else {
+                                    el.innerText = target + (target === 100 && el.nextElementSibling.innerText.includes('Quality') ? '%' : '+');
+                                }
+                            };
+
+                            if (!prefersReducedMotion) {
+                                updateCount();
+                            } else {
+                                el.innerText = target + (target === 100 && el.nextElementSibling.innerText.includes('Quality') ? '%' : '+');
+                            }
+                        });
+                        countObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const statsStrip = document.querySelector('.stats-strip');
+            if (statsStrip) countObserver.observe(statsStrip);
+
+            // Active Nav Highlighting
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -40% 0px', threshold: 0.1 });
+
+            sections.forEach(sec => navObserver.observe(sec));
+        });
+    </script>
 </body>
 
 </html>
