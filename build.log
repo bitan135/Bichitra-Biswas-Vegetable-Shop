@@ -1,0 +1,32 @@
+
+> next-temp@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/components/About.tsx:75:31
+Type error: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { duration: number; ease: string; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+
+[0m [90m 73 |[39m                     viewport[33m=[39m{{ once[33m:[39m [36mtrue[39m[33m,[39m margin[33m:[39m [32m"-100px"[39m }}[0m
+[0m [90m 74 |[39m                 [33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 75 |[39m                     [33m<[39m[33mmotion[39m[33m.[39mp variants[33m=[39m{textItemVariants} className[33m=[39m[32m"font-sans text-[11px] text-gold tracking-[5px] uppercase mb-4"[39m[33m>[39m[0m
+[0m [90m    |[39m                               [31m[1m^[22m[39m[0m
+[0m [90m 76 |[39m                         [33mOur[39m [33mHeritage[39m [33m&[39mmiddot[33m;[39m আমাদের ঐতিহ্য[0m
+[0m [90m 77 |[39m                     [33m<[39m[33m/[39m[33mmotion[39m[33m.[39mp[33m>[39m[0m
+[0m [90m 78 |[39m[0m
+Next.js build worker exited with code: 1 and signal: null
